@@ -139,7 +139,7 @@ def add_transaction():
     json = request.get_json()
     transaction_keys = ['sender', 'receiver', 'amount']
     if not all(key in json for key in transaction_keys):
-        return 'w00f, work bad, much missing, no no!', 400
+        return 'w00f, work bad, much missing transaction, no no!', 400
     index = blockchain.add_transaction(json['sender'], json['receiver'], json['amount'])
     response = {'message': f'This transaction will be added to Block {index}'}
     return jsonify(response), 201
@@ -151,7 +151,7 @@ def connect_node():
     json = request.get_json()
     nodes = json.get('nodes')
     if nodes is None:
-        return 'w00f, work bad, much missing, no no!', 400
+        return 'w00f, work bad, much missing nodes, no no!', 400
     for node in nodes:
         blockchain.add_node(node)
     response = {'message': 'All the nodes are now connected. The Sheltiecoin Blockchain now contains the following nodes:',
