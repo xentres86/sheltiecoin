@@ -145,7 +145,18 @@ def add_transaction():
     return jsonify(response), 201
 
 # Decentralizing the Blockchain
-
+# Connecting new nodes
+@app.route('/connect_node', methods = ['POST'])
+def connect_node():
+    json = request.get_json()
+    nodes = json.get('nodes')
+    if nodes is None:
+        return 'w00f, work bad, much missing, no no!', 400
+    for node in nodes:
+        blockchain.add_node(node)
+    response = {'message': 'All the nodes are now connected. The Sheltiecoin Blockchain now contains the following nodes:',
+                'total_nodes': list(blockchain.nodes)}
+    return jsonify(response), 201
 
 # Running the app
 app.run(host = '0.0.0.0', port = 5000)
