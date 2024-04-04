@@ -35,4 +35,12 @@ contract sheltiecoin_ico {
         return equity_usd[investor];
     }
     
+    // Buying Sheltiecoins
+    function buy_sheltiecoins(address investor, uint usd_invested) external can_buy_sheltiecoins(usd_invested) {
+        uint sheltiecoins_bought = usd_invested * usd_to_sheltiecoins;
+        equity_sheltiecoins[investor] += sheltiecoins_bought;
+        equity_usd[investor] = equity_sheltiecoins[investor] / usd_to_sheltiecoins;
+        total_sheltiecoins_bought += sheltiecoins_bought;
+    }
+    
 }
