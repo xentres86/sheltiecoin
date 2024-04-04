@@ -6,7 +6,7 @@ The included tools are:
 
 - [X] Blockchain
 - [X] Sheltiecoin
-- [ ] SmartContract
+- [X] SmartContract
 
 !!! Attention, a lot of code duplication for testing (decentralization and learning) !!!
 
