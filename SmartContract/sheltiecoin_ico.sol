@@ -24,5 +24,15 @@ contract sheltiecoin_ico {
         require(usd_invested * usd_to_sheltiecoins + total_sheltiecoins_bought <= max_sheltiecoins);
         _;
     }
+
+    // Getting the equity in Sheltiecoins of an investor
+    function equity_in_sheltiecoins(address investor) external view returns (uint) {
+        return equity_sheltiecoins[investor];
+    }
+
+    // Getting the equity in USD of an investor
+    function equity_in_usd(address investor) external view returns (uint) {
+        return equity_usd[investor];
+    }
     
 }
