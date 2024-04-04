@@ -18,5 +18,11 @@ contract sheltiecoin_ico {
     // Mapping from the investor address to its equity in Sheltiecoins and USD
     mapping(address => uint) equity_sheltiecoins;
     mapping(address => uint) equity_usd;
+
+    // Checking if an investor can buy Sheltiecoins
+    modifier can_buy_sheltiecoins(uint usd_invested) {
+        require(usd_invested * usd_to_sheltiecoins + total_sheltiecoins_bought <= max_sheltiecoins);
+        _;
+    }
     
 }
